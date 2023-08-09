@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, ScrollView, View } from "react-native";
-import { displayTime } from "./util";
+import { displayTime } from "../util";
 // print the lap time
 function Result({ results }: { results?: number[] }) {
   

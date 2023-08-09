@@ -9,8 +9,7 @@ type Props = {
 export const LongPress = ({children, longPress}: Props) => {
   const longPressGesture = Gesture.LongPress().onEnd((e, success) => {
     if (success) {
-        console.log("long press 1");
-        longPress();
+      longPress();
     }
   });
 

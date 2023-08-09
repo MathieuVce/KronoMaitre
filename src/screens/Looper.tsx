@@ -1,12 +1,15 @@
-import  React, { useState, useRef, useCallback, useEffect } from "react";
-import { StyleSheet, SafeAreaView, Text, View, Platform, Alert, ImageBackground } from "react-native";
+import  React, { useState, useRef, useCallback } from "react";
+import { StyleSheet, SafeAreaView, Text, View, Platform, Alert } from "react-native";
 import Constants from "expo-constants";
-import Result from "./Result";
-import { displayTime } from "./util";
-import { DoubleTap } from "./DoubleTap";
-import { LongPress } from "./LongPress";
+import Result from "../components/Result";
+import { displayTime } from "../util";
+import { DoubleTap } from "../components/DoubleTap";
+import { LongPress } from "../components/LongPress";
+import { AppModelNavProps } from "../roots/AppModelNav";
 
-export default function StopWatch() {
+type ILooperProps = AppModelNavProps<'Looper'>;
+
+export const Looper: React.FC<ILooperProps> = () => {
   const [time, setTime] = useState(0);
   const [isRunning, setRunning] = useState(false);
   const [results, setResults] = useState<number[]>([]);
@@ -58,19 +61,11 @@ export default function StopWatch() {
 
 return (
     <SafeAreaView style={styles.container}>
-      <LongPress longPress={handleReset}>
-        <DoubleTap singleTap={handleStart} doubleTap={handleLaps}>
-          <View style={styles.display}>
-            <Text style={styles.displayText}>{displayTime(time)}</Text>
-          </View>
-        </DoubleTap>
-      </LongPress>
-      <View style={{ flex: isRunning ? 1/6 : 2/7 }}>
-        <Result results={results} />
-      </View>
+      <Text>Looper</Text>
     </SafeAreaView>
   );
 }
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -81,6 +76,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    backgroundColor: 'red' 
   },
   displayText: {
     color: "white",
